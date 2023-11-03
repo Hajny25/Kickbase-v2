@@ -32,7 +32,11 @@ class Client:
         r = requests.post(
             BASE_URL + "/user/login", data=json.dumps(data), headers=headers
         )
-        r.raise_for_status()
+        try:
+            r.raise_for_status()
+        except requests.exceptions.HttpError:
+            SystemExit("Authentication failed: KICKBASE_USER and KICKBASE_PASSWORD need to be set correctly.")
+
         headers["Cookie"] = f"kkstrauth={r.json()['token']}"
         return headers
 
