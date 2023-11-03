@@ -1,0 +1,18 @@
+Bayern 2
+Dortmund 3
+Frankfurt 4
+Freiburg 5
+Bayer 04 7
+Stuttgart 9
+Bremen 10
+Wolfsburg 11
+Augsburg 13
+Hoffenheim 14
+M-Gladbach 15
+Nürnberg 16
+Mainz 05 18
+Bochum 24
+Köln 28
+Union 40
+Darmstadt 42
+Leipzig 43

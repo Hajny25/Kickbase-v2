@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kickbase v2</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+
+<body>
+    <div class="header">
+        <h1>Kickbase v2</h1>
+        <h2 class="total-points">Total: {{ totalPoints }}</h2>
+    </div>
+
+    <div class="container">
+        {% for player in players %}
+        <div class="player" id={{ player.id }}>
+            <img src="https://kickbase.b-cdn.net/pool/playersbig/{{ player.id }}.png" alt="{{ player.name }}"
+                class="player-image">
+            <div class="player-info">
+                <p class="player-name">{{ player.name }}<span class="player-number">#{{ player.nr }}</span></p>
+                <p class="player-position">{{ player.pos }}</p>
+            </div>
+            <div class="player-points">{{ player.points }}</div>
+            <div class="player-points-diff">{{ player.pointsDiff }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="footer">
+        <p>&copy; Kickbase v2. All rights reserved.</p>
+    </div>
+</body>
+<script type="text/javascript" src="/static/js/updater.js"> </script>
+<script type="text/javascript" charset="utf-8">
+    var sock = new WebSocket("ws://" + window.location.host + "/ws")
+    sock.onopen = function () {
+        console.log("Connected to server")
+    }
+    sock.onmessage = function (msg) {
+        console.log("Update");
+        data = JSON.parse(msg.data)
+        update(data);
+    }
+</script>
+
+</html>
